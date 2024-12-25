@@ -13,7 +13,7 @@ const Blog = require('./models/blog');
 const Comment = require("./models/comment");
 
 const app = express();
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT;
 
 //here you are connecting to database
 mongoose.connect(process.env.MONGO_URL)
