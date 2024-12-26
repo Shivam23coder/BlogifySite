@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT;
 
 //here you are connecting to database
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URL)
         .then((e)=> console.log("MongoDB connected"))
         .catch(err => console.log(err));
 
