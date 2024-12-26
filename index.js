@@ -28,7 +28,7 @@ app.use(checkForAuthenticationCookie("token"));
 //Next line == ?
 app.use(express.static(path.resolve('./public')));
 
-app.get("/", async (req,res) =>{
+app.get("https://blogify-site7-5nxwap2io-shivam23coders-projects.vercel.app/", async (req,res) =>{
     const allBlogs = await Blog.find({});
     res.render("home",{
         user: req.user,
