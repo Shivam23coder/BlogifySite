@@ -16,8 +16,9 @@ const app = express();
 const PORT = process.env.PORT;
 
 //here you are connecting to database
-mongoose.connect(process.env.MONGO_URL)
-        .then((e)=> console.log("MongoDB connected"));
+mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true, useUnifiedTopology: true })
+        .then((e)=> console.log("MongoDB connected"))
+        .catch(err => console.log(err));
 
 app.set("view engine","ejs");
 app.set("views",path.resolve("./views"));
@@ -28,7 +29,7 @@ app.use(checkForAuthenticationCookie("token"));
 //Next line == ?
 app.use(express.static(path.resolve('./public')));
 
-app.get("https://blogify-site7-5nxwap2io-shivam23coders-projects.vercel.app/", async (req,res) =>{
+app.get("/", async (req,res) =>{
     const allBlogs = await Blog.find({});
     res.render("home",{
         user: req.user,
