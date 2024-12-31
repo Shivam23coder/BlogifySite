@@ -16,9 +16,19 @@ const app = express();
 const PORT = process.env.PORT;
 
 //here you are connecting to database
-mongoose.connect(process.env.MONGO_URL)
-        .then((e)=> console.log("MongoDB connected"))
-        .catch(err => console.log(err));
+// mongoose.connect(process.env.MONGO_URL)
+//         .then((e)=> console.log("MongoDB connected"))
+//         .catch(err => console.log(err));
+
+        async () => {
+            try {
+                const connectionInstance = await mongoose.connect(`${process.env.MONGO_URL}`)
+                console.log(`\nMongoDB connected: DB host: ${connectionInstance.connection.host}`);
+            } catch (error) {
+                console.log("MongoDB connection FAILED",error);
+                process.exit(1);
+            }
+        }
 
 app.set("view engine","ejs");
 app.set("views",path.resolve("./views"));
