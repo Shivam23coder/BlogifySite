@@ -19,10 +19,10 @@ const userSchema = new Schema({
         type: String,
         required: true,
     },
-    profileImageURL: {
-        type: String,
-        default: "../public/images/useravatar.jpg",
-    },
+    // profileImageURL: {
+    //     type: String,
+    //     default: "../public/images/useravatar.jpg",
+    // },
     role: {
         type: String,
         enum: ["User","Admin"],
